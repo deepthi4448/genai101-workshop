@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crocodile Facts</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7e0; /* Light green background */
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background-color: #4caf50; /* Crocodile green */
+            color: white; /* White text for contrast */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: auto;
+        }
+
+        button {
+            background-color: #ffffff; /* White button */
+            color: #4caf50; /* Crocodile green text */
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        button:hover {
+            background-color: #4caf50; /* Change to crocodile green on hover */
+            color: white; /* Change text color to white on hover */
+        }
+
+        .fade-in {
+            opacity: 1;
+            transition: opacity 0.3s ease-in;
+        }
+
+        .fade-out {
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crocodile Facts</h1>
+        <button id="factButton">Show a Fact</button>
+        <p id="factDisplay" class="fade-in"></p>
+    </div>
+    <script>
+        const crocodileFacts = [
+            "Crocodiles can live for over 70 years in the wild.",
+            "They have the strongest bite of any animal, with a bite force of over 3,700 pounds per square inch.",
+            "Crocodiles are more closely related to birds than they are to lizards.",
+            "They can hold their breath underwater for up to an hour while waiting for prey.",
+            "Crocodiles can run up to 15 miles per hour on land for short distances.",
+            "They have a unique ability to see in color, which helps them hunt.",
+            "Crocodiles are known to be very protective of their nests and young.",
+            "They can swim at speeds of up to 20 miles per hour.",
+            "Crocodiles have a special valve in their throat that allows them to open their mouths underwater.",
+            "Some species of crocodiles can tolerate saltwater due to specialized glands in their tongues."
+        ];
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * crocodileFacts.length);
+            const factDisplay = document.getElementById('factDisplay');
+            
+            // Fade out the current fact
+            factDisplay.classList.remove('fade-in');
+            factDisplay.classList.add('fade-out');
+
+            // Wait for the fade-out to complete before updating the text
+            setTimeout(() => {
+                factDisplay.innerText = crocodileFacts[randomIndex];
+                // Fade in the new fact
+                factDisplay.classList.remove('fade-out');
+                factDisplay.classList.add('fade-in');
+            }, 300); // Duration of the fade-out effect
+        });
+    </script>
+</body>
+</html>
